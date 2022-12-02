@@ -31,8 +31,8 @@ type Page struct {
 
 // storing pre defined password and email in this map for validating
 var userDB = map[string]string{
-	"password": "admin",
-	"email":    "admin@gmail.com",
+	"password": "amal123",
+	"email":    "amal@gmail.com",
 }
 
 // creating a struct instance P which sets initial value of Status to false
@@ -44,6 +44,7 @@ var P = Page{
 func login(w http.ResponseWriter, r *http.Request) {
 
 	//setting the response header to the following values
+	//response header - Cache-Control
 	w.Header().Set("Cache-Control", "no-cache,no-store,must-revalidate")
 	ok := Middleware(w, r)
 
@@ -82,7 +83,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 		session, _ := Store.Get(r, "started")
 
-		session.Values["id"] = "user"
+		session.Values["id"] = "Amal"
 		P.Header1 = session.Values["id"]
 		fmt.Println(P.Header1)
 		session.Save(r, w)

@@ -15,11 +15,6 @@
   </head>
   <body>
     <style>
-      body {
-        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZkEU7Z7QKWBMa8c-ALQoZWjfKeGXEeNXsSw&usqp=CAU");
-        background-size: cover;
-      }
-
       .hero .before_login {
         color: black;
       }
@@ -97,8 +92,22 @@
       <div class="hero">
         {{if .Status}}
         <h1 after_login>Welcome {{.Header1}}</h1>
-        {{else}}
-        <h1 before_login>Welcome New User</h1>
+        <div>
+          <img  
+            class="rounded mx-auto center-block"
+            src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2376cca1ecc0b7e.png"
+            alt=""
+            />
+          </div>
+          {{else}}
+          <h1 before_login>Welcome New User</h1>
+          <div>
+            <img
+            class="rounded mx-auto center-block"
+            src="https://pngimg.com/uploads/welcome/welcome_PNG32.png"
+            alt=""
+            />
+          </div>
         {{end}}
       </div>
     </div>
