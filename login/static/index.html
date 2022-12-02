@@ -22,8 +22,8 @@
         color: green;
       }
       .hero {
-        margin-left: 600px;
-        margin-top: 300px;
+        margin-left: auto;
+        margin-top: auto
       }
     </style>
     <div class="header">
@@ -44,33 +44,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
+                <a class="nav-link active" aria-current="page" href="#">Hikers Club</a>
             </ul>
 
             <form class="d-flex" role="search">
@@ -89,22 +63,25 @@
         </div>
       </nav>
 
-      <div class="hero">
+      <div class="hero px-5 text-center">
         {{if .Status}}
         <h1 after_login>Welcome {{.Header1}}</h1>
         <div>
           <img  
-            class="rounded mx-auto center-block"
+            class="img-fluid rounded mx-auto"
             src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/2376cca1ecc0b7e.png"
             alt=""
             />
           </div>
           {{else}}
-          <h1 before_login>Welcome New User</h1>
+          <h1>Login to continue</h1>
+          <a  href="/login" class="btn btn-outline-danger my-4" type="submit"
+          >login
+        </a>
           <div>
             <img
-            class="rounded mx-auto center-block"
-            src="https://pngimg.com/uploads/welcome/welcome_PNG32.png"
+            class="img-fluid me-0 ms-0"
+            src="https://img.freepik.com/free-vector/tourists-cross-log-bridge-mountains-cliff-rock-peaks-landscape-with-waterfall-trees-girl-make-picture-beautiful-scenery-nature-view_107791-4591.jpg?w=1380&t=st=1669998707~exp=1669999307~hmac=01b6c0ec94011160eb52c7a092508f7c7c7eef6a6885e8f977155cef6d4ed5f7"
             alt=""
             />
           </div>
