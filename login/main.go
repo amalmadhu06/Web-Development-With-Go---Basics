@@ -14,15 +14,15 @@ import (
 // creating a variable with type *template.Template for storing the parsed files
 var tpl *template.Template
 
-// for session handling
+// for saving cookies
 var Store = sessions.NewCookieStore([]byte("admin"))
 
-// function init which parses html files inside the static folder
+// function init which parses html files inside the template folder
 func init() {
-	tpl = template.Must(template.ParseGlob("static/*.html"))
+	tpl = template.Must(template.ParseGlob("template/*.html"))
 }
 
-// struct for storing ____ details
+// struct for storing session details
 type Page struct {
 	Status  bool
 	Header1 interface{}
@@ -31,7 +31,7 @@ type Page struct {
 
 // storing pre defined password and email in this map for validating
 var userDB = map[string]string{
-	"password": "amal123",
+	"password": "amal@123xyz",
 	"email":    "amal@gmail.com",
 }
 
@@ -98,11 +98,9 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 
 		//showing alert box
-		dialog.Alert("Action Not allowed")
-		//redirecting to login page
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		dialog.Alert("Incorrect Email or Password. Try again")
 		return
-
 	}
 
 }
@@ -123,8 +121,7 @@ func Logouthandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//function Middleware for session handling
-
+// function Middleware for session handling
 func Middleware(w http.ResponseWriter, r *http.Request) bool {
 	session, _ := Store.Get(r, "started")
 
