@@ -10,10 +10,14 @@ import (
 // function CheckLastVisit
 func CheckLastVisit(w http.ResponseWriter, r *http.Request) {
 
+	//nameed cookie is received to 'c'. If multiple cookies found, only one cookie will be returned
+	//if no cookie is found, errNoCookie is returned and stored in  'err'
 	c, err := r.Cookie("lastvisit")
 	expiry := time.Now().AddDate(0, 0, 1) //(year, month, days) --> setting the expiry to one day
 
 	//creating cookie variable which points to http.Cookie and sets the value there
+	//Cookie is a struct . It represents an HTTP cookie as sent in the Set-Cookie header of an
+	// HTTP response or the Cookie header of an HTTP request
 	cookie := &http.Cookie{
 		Name:    "lastvisit",
 		Expires: expiry,
