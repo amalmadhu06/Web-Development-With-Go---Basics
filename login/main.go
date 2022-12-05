@@ -85,10 +85,9 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 		session.Values["id"] = "Amal"
 		P.Header1 = session.Values["id"]
-		fmt.Println(P.Header1)
 		session.Save(r, w)
 
-		fmt.Println(session)
+		// fmt.Println(session)
 
 		w.Header().Set("Cache-Control", "no-cache,no-store,must-revalidate")
 
@@ -151,7 +150,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 // function main ()
 func main() {
-	//works when server is connectedsadd 
+
+	//works when server is connected
 	http.HandleFunc("/", index)
 
 	//works when we click the login button
