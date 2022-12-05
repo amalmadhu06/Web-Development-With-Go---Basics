@@ -17,7 +17,7 @@ var tpl *template.Template
 var Store = sessions.NewCookieStore([]byte("admin"))
 
 // function init which parses html files inside the template folder
-//init will itself
+// init will itself
 func init() {
 	tpl = template.Must(template.ParseGlob("template/*.html"))
 }
@@ -37,9 +37,8 @@ var userDB = map[string]string{
 
 // creating a struct instance P which sets initial value of Status to false
 var P = Page{
-	Status: false, //not logged in 
+	Status: false, //not logged in
 }
-
 
 // function login which gets called when we access /login
 func login(w http.ResponseWriter, r *http.Request) {
@@ -141,7 +140,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 	filenamE := "index.html"
 
-	
 	//checking for error and handling it
 	err := tpl.ExecuteTemplate(w, filenamE, P)
 	if err != nil {
@@ -153,13 +151,20 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 // function main ()
 func main() {
+	//works when server is connectedsadd 
 	http.HandleFunc("/", index)
-	http.HandleFunc("/login-submit", loginHandler)
-	http.HandleFunc("/login", login)
-	http.HandleFunc("/logout", Logouthandler)
-	fmt.Println("server starts at port 8080")
 
-	//error handling
+	//works when we click the login button
+	http.HandleFunc("/login-submit", loginHandler)
+
+	//works when there is no sessions present
+	http.HandleFunc("/login", login)
+
+	//if session is present, this will remove the session and make user logout
+	http.HandleFunc("/logout", Logouthandler)
+
+	//connecting to a port
+	fmt.Println("server starts at port 8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
