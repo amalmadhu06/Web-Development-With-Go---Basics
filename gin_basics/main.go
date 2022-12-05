@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
-
 func main() {
 	//creating a router
 	r := gin.Default()
@@ -16,5 +15,5 @@ func main() {
 	})
 
 	//starting the server
-	r.Run("localhost:8080") 
+	r.Run("localhost:8080")
 }
