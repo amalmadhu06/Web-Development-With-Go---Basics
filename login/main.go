@@ -17,6 +17,7 @@ var tpl *template.Template
 var Store = sessions.NewCookieStore([]byte("admin"))
 
 // function init which parses html files inside the template folder
+//init will itself
 func init() {
 	tpl = template.Must(template.ParseGlob("template/*.html"))
 }
@@ -36,8 +37,9 @@ var userDB = map[string]string{
 
 // creating a struct instance P which sets initial value of Status to false
 var P = Page{
-	Status: false,
+	Status: false, //not logged in 
 }
+
 
 // function login which gets called when we access /login
 func login(w http.ResponseWriter, r *http.Request) {
@@ -136,10 +138,10 @@ func index(w http.ResponseWriter, r *http.Request) {
 	ok := Middleware(w, r)
 	if ok {
 		P.Status = true
-
 	}
 	filenamE := "index.html"
 
+	
 	//checking for error and handling it
 	err := tpl.ExecuteTemplate(w, filenamE, P)
 	if err != nil {
