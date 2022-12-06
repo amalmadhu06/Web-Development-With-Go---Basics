@@ -10,7 +10,7 @@ import (
 // function CheckLastVisit
 func CheckLastVisit(w http.ResponseWriter, r *http.Request) {
 
-	//nameed cookie is received to 'c'. If multiple cookies found, only one cookie will be returned
+	//named cookie is received to 'c'. If multiple cookies found, only one cookie will be returned
 	//if no cookie is found, errNoCookie is returned and stored in  'err'
 	c, err := r.Cookie("lastvisit")
 	expiry := time.Now().AddDate(0, 0, 1) //(year, month, days) --> setting the expiry to one day
@@ -20,8 +20,8 @@ func CheckLastVisit(w http.ResponseWriter, r *http.Request) {
 	// HTTP response or the Cookie header of an HTTP request
 	cookie := &http.Cookie{
 		Name:    "lastvisit",
-		Expires: expiry,
-		Value:   strconv.FormatInt(time.Now().Unix(), 10),
+		Expires: expiry,                                   //setting expiration time as one day
+		Value:   strconv.FormatInt(time.Now().Unix(), 10), //time in int format
 	}
 
 	//sending arguments to http.SetCookie
